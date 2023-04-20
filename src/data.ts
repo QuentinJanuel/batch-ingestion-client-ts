@@ -5,6 +5,7 @@ export const data: Data = {
     entities: [
         {
             id: "Q22",
+            // mode: "add",
             type: "item",
             labels: {
                 en: {

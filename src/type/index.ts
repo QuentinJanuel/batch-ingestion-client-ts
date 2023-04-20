@@ -30,13 +30,19 @@ type Claims = {
     }[];
 }
 
-interface Entity {
-    id?: string;
+interface BaseEntity {
     type: EntityType;
     labels?: ValuesInLanguages;
     claims?: Claims;
     descriptions?: ValuesInLanguages;
 }
+
+type NewEntity = BaseEntity & { id?: never, mode?: never };
+type OverwriteEntity = BaseEntity & { id: string, mode?: never };
+type AddToEntity = BaseEntity & { id: string, mode: "add" };
+type RemoveFromEntity = BaseEntity & { id: string, mode: "remove" };
+
+type Entity = NewEntity | OverwriteEntity | AddToEntity | RemoveFromEntity;
 
 export interface Data {
     key: string;
