@@ -5,7 +5,7 @@ export const data: Data = {
     entities: [
         {
             id: "Q22",
-            // mode: "add",
+            mode: "add",
             type: "item",
             labels: {
                 en: {
@@ -29,21 +29,21 @@ export const data: Data = {
                         rank: "normal",
                     },
                 ],
-                P2: [
-                    {
-                        mainsnak: {
-                            snaktype: "value",
-                            property: "P2",
-                            datatype: "external-id",
-                            datavalue: {
-                                value: "some claim value 2",
-                                type: "string",
-                            },
-                        },
-                        type: "statement",
-                        rank: "normal",
-                    },
-                ],
+                // P2: [
+                //     {
+                //         mainsnak: {
+                //             snaktype: "value",
+                //             property: "P2",
+                //             datatype: "external-id",
+                //             datavalue: {
+                //                 value: "some claim value 2",
+                //                 type: "string",
+                //             },
+                //         },
+                //         type: "statement",
+                //         rank: "normal",
+                //     },
+                // ],
             },
             descriptions: {
                 en: {
