@@ -1,5 +1,5 @@
-import { Data } from "./type";
 import axios from "axios";
+import { Data } from "./type";
 import { Response } from "./type/response";
 
 export const getIngestor = function (baseURL: string) {
