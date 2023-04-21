@@ -1,3 +1,4 @@
+```ts
 import { Data } from "./type";
 
 export const data: Data = {
@@ -54,3 +55,4 @@ export const data: Data = {
         },
     ],
 };
+```

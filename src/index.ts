@@ -1,9 +1,8 @@
 import axios from "axios";
-import { data } from "./data";
 import { Data } from "./type";
 import { Response } from "./type/response";
 
-export const init = function (baseURL: string) {
+export const getIngestor = function (baseURL: string) {
     const route = "/w/rest.php/BatchIngestion/v0/batchcreate";
     const url = baseURL + route;
     return async function (data: Data): Promise<Response> {
@@ -18,12 +17,3 @@ export const init = function (baseURL: string) {
         }
     }
 }
-
-const batchIngest = init("http://default.mediawiki.mwdd.localhost:8080");
-
-const main = async function () {
-    const res = await batchIngest(data);
-    console.log(res);
-}
-
-main().catch(console.error);
