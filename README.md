@@ -13,54 +13,32 @@ npm i batch-ingestion-client-ts
 ## Usage
 
 ```ts
-import { getIngestor } from "batch-ingestion-client-ts";
+import { setup } from "batch-ingestion-client-ts";
 // or import with require
-const { getIngestor } = require("batch-ingestion-client-ts");
+const { setup } = require("batch-ingestion-client-ts");
 
-const ingest = getIngestor("http://default.mediawiki.mwdd.localhost:8080");
+const ingest = await setup({
+    username: "your-username",
+    password: "your-password",
+    url: "https://your-wiki-url.com",
+});
 
-const res = await ingest({
-    key: "<your-api-key>",
-    entities: [
-        {
-            id: "Q22",
-            mode: "add",
-            type: "item",
-            labels: {
-                en: {
-                    language: "en",
-                    value: "some new name",
-                },
-            },
-            claims: {
-                P1: [
-                    {
-                        mainsnak: {
-                            snaktype: "value",
-                            property: "P1",
-                            datatype: "external-id",
-                            datavalue: {
-                                value: "some claim value",
-                                type: "string",
-                            },
-                        },
-                        type: "statement",
-                        rank: "normal",
-                    },
-                ],
-            },
-            descriptions: {
-                en: {
-                    language: "en",
-                    value: "some description",
-                },
+const response = await ingest([
+    {
+        type: "item",
+        labels: {
+            en: {
+                language: "en",
+                value: "My item",
             },
         },
-    ],
-});
-console.log(res);
+    },
+]);
+
+console.log(response);
 ```
 
-## Contributing
+## Limitations
 
-If you'd like to contribute to this library, please feel free to submit a pull request.
+This library internally uses cURL to make requests to the MediaWiki API. This means that it is not possible to use this library in a browser environment.
+We would just need to replace the cURL calls with fetch calls to make this library work in a browser environment. If this is something you need, please feel free to submit a pull request or open an issue.

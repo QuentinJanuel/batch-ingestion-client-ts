@@ -1,12 +1,17 @@
 {
   "name": "batch-ingestion-client-ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/QuentinJanuel/batch-ingestion-client-ts.git"
+  },
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
+    "start": "npm run build && node dist/index.js",
     "lint": "tsc"
   },
   "keywords": [],
@@ -16,8 +21,5 @@
     "@changesets/cli": "^2.26.1",
     "tsup": "^6.7.0",
     "typescript": "^5.0.4"
-  },
-  "dependencies": {
-    "axios": "^1.3.5"
   }
 }

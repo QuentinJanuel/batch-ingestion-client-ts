@@ -1,19 +1,27 @@
-import axios from "axios";
-import { Data } from "./type";
-import { Response } from "./type/response";
+import { setup } from "./lib";
 
-export const getIngestor = function (baseURL: string) {
-    const route = "/w/rest.php/BatchIngestion/v0/batchcreate";
-    const url = baseURL + route;
-    return async function (data: Data): Promise<Response> {
-        try {
-            const response = await axios.post(url, data);
-            return response.data;
-        } catch (err) {
-            const error = err as any;
-            if (error.response && error.response.data && error.response.data.error)
-                throw error.response.data.error;
-            throw error;
-        }
-    }
-}
+export { setup };
+
+// const main = async function () {
+//     const ingest = await setup({
+//         username: "admin",
+//         password: "change-this-password",
+//         url: "http://localhost:3000",
+//     });
+
+//     const response = await ingest([
+//         {
+//             type: "item",
+//             labels: {
+//                 en: {
+//                     language: "en",
+//                     value: "My item",
+//                 },
+//             },
+//         },
+//     ]);
+
+//     console.log(response);
+// }
+
+// main().catch(console.error);

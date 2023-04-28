@@ -42,9 +42,4 @@ type OverwriteEntity = BaseEntity & { id: string, mode?: never };
 type AddToEntity = BaseEntity & { id: string, mode: "add" };
 type RemoveFromEntity = BaseEntity & { id: string, mode: "remove" };
 
-type Entity = NewEntity | OverwriteEntity | AddToEntity | RemoveFromEntity;
-
-export interface Data {
-    key: string;
-    entities: Entity[];
-}
+export type Entity = NewEntity | OverwriteEntity | AddToEntity | RemoveFromEntity;
